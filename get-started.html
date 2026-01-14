@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request a Print | Raphael Prints</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.hint {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.file-upload {
+    border: 2px dashed #667eea;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    background: #f8f9ff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.file-upload:hover {
+    background: #f0f2ff;
+    border-color: #764ba2;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.upload-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.file-info {
+    margin-top: 15px;
+    padding: 10px;
+    background: #e8f5e9;
+    border-radius: 5px;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.warning-box {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.warning-box strong {
+    color: #856404;
+}
+
+.slider-container {
+    margin-top: 15px;
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+    border: none;
+}
+
+.value-display {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.current-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #667eea;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 18px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.back-link:hover {
+    opacity: 0.8;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    resize: vertical;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.material-options {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.material-card {
+    flex: 1;
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.material-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.material-card input[type="radio"]:checked + .material-content {
+    color: #667eea;
+}
+
+.material-card input[type="radio"]:checked ~ .material-content::before {
+    content: "✓";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #667eea;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.material-card:hover {
+    border-color: #667eea;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.material-card input[type="radio"]:checked + .material-content {
+    border-color: #667eea;
+}
+
+.material-content {
+    text-align: center;
+    position: relative;
+}
+
+.material-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.material-content h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.material-content p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.material-price {
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #667eea;
+    padding-top: 12px;
+    border-top: 2px solid #eee;
+}
+
+.material-card input[type="radio"]:checked ~ .material-content h3 {
+    color: #667eea;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .material-options {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Back to Home</a>
+
+<div class="container">
+    <h1>Request Your 3D Print</h1>
+    <p class="subtitle">Fill out the details below and we'll get started on your project!</p>
+    
+    <form id="printForm">
+        <!-- File Upload -->
+        <div class="form-group">
+            <label>Upload Your 3D Model</label>
+            <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📁</div>
+                <p><strong>Click to upload</strong> or drag and drop</p>
+                <p style="color: #999; font-size: 14px;">Accepted formats: STL, 3MF</p>
+                <input type="file" id="fileInput" accept=".stl,.3mf" required>
+            </div>
+            <div id="fileInfo" class="file-info" style="display: none;"></div>
+        </div>
+
+        <!-- Print Boundaries Warning -->
+        <div class="warning-box">
+            <strong>⚠️ Print Boundaries:</strong> Maximum build volume is 250mm × 250mm × 250mm. Please ensure your model fits within these dimensions.
+        </div>
+
+        <!-- Material Selection -->
+        <div class="form-group">
+            <label>Material Type</label>
+            <p class="hint">Choose the filament material for your print.</p>
+            <div class="material-options">
+                <label class="material-card">
+                    <input type="radio" name="material" value="PLA" data-price="0.35" checked>
+                    <div class="material-content">
+                        <div class="material-icon">🌱</div>
+                        <h3>PLA</h3>
+                        <p>Easy to print, biodegradable, good for general use</p>
+                        <div class="material-price">$0.35/gram</div>
+                    </div>
+                </label>
+                
+                <label class="material-card">
+                    <input type="radio" name="material" value="PETG" data-price="0.40">
+                    <div class="material-content">
+                        <div class="material-icon">💪</div>
+                        <h3>PETG</h3>
+                        <p>Strong, durable, chemical resistant, flexible</p>
+                        <div class="material-price">$0.40/gram</div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Infill Percentage -->
+        <div class="form-group">
+            <label>Infill Percentage</label>
+            <p class="hint">Controls internal density. 15% is standard for most prints.</p>
+            <div class="slider-container">
+                <input type="range" id="infillSlider" min="10" max="100" value="15" step="5">
+                <div class="current-value"><span id="infillValue">15</span>%</div>
+                <div class="value-display">
+                    <span>10% (Light)</span>
+                    <span>100% (Solid)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Instructions -->
+        <div class="form-group">
+            <label>Custom Instructions</label>
+            <p class="hint">Any special requests or notes about your print? (Optional)</p>
+            <textarea id="customInstructions" rows="5" placeholder="Example: Please print in red PLA, needs support structures, rush order, etc."></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Submit Print Request</button>
+    </form>
+</div>
+
+<script>
+// File upload handling
+const fileInput = document.getElementById('fileInput');
+const fileInfo = document.getElementById('fileInfo');
+
+fileInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const fileExtension = file.name.split('.').pop().toLowerCase();
+        if (fileExtension === 'stl' || fileExtension === '3mf') {
+            fileInfo.textContent = `✓ ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+            fileInfo.style.display = 'block';
+        } else {
+            alert('Please upload only STL or 3MF files.');
+            fileInput.value = '';
+            fileInfo.style.display = 'none';
+        }
+    }
+});
+
+// Infill slider
+const infillSlider = document.getElementById('infillSlider');
+const infillValue = document.getElementById('infillValue');
+
+infillSlider.addEventListener('input', function() {
+    infillValue.textContent = this.value;
+});
+
+// Material selection
+document.querySelectorAll('input[name="material"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        document.querySelectorAll('.material-card').forEach(opt => {
+            opt.style.borderColor = '#ddd';
+            opt.style.background = 'white';
+        });
+        
+        if (this.checked) {
+            this.closest('.material-card').style.borderColor = '#667eea';
+            this.closest('.material-card').style.background = '#f0f2ff';
+        }
+    });
+});
+
+// Form submission
+document.getElementById('printForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const file = fileInput.files[0];
+    const material = document.querySelector('input[name="material"]:checked').value;
+    const materialPrice = document.querySelector('input[name="material"]:checked').dataset.price;
+    const infill = infillSlider.value;
+    const instructions = document.getElementById('customInstructions').value;
+    
+    if (!file) {
+        alert('Please upload a 3D model file.');
+        return;
+    }
+    
+    // Build the message
+    let message = `Print Request Submitted!\n\nFile: ${file.name}\nMaterial: ${material} ($${materialPrice}/gram)\nInfill: ${infill}%`;
+    
+    if (instructions.trim()) {
+        message += `\n\nCustom Instructions:\n${instructions}`;
+    }
+    
+    message += '\n\nWe\'ll contact you soon with a quote!';
+    
+    // Display the collected information
+    alert(message);
+    
+    // Here you would normally send this data to a server
+    // For now, we'll just reset the form
+    // this.reset();
+    // fileInfo.style.display = 'none';
+});
+</script>
+
+</body>
+</html>

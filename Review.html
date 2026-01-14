@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Reviews | Raphael Prints</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f5f5f5;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.back-link:hover {
+    opacity: 0.8;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.page-title {
+    text-align: center;
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 36px;
+}
+
+.page-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+
+.rating-summary {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.overall-rating {
+    font-size: 64px;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.stars {
+    font-size: 32px;
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+.review-count {
+    color: #666;
+    font-size: 16px;
+}
+
+.reviews-section {
+    margin-bottom: 50px;
+}
+
+.section-header {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #667eea;
+}
+
+.review-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.reviewer-name {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
+
+.review-date {
+    color: #999;
+    font-size: 14px;
+}
+
+.review-stars {
+    color: #ffc107;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.review-text {
+    color: #666;
+    line-height: 1.8;
+}
+
+.no-reviews {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+.review-form-section {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.star-rating {
+    display: flex;
+    gap: 10px;
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+.star {
+    cursor: pointer;
+    color: #ddd;
+    transition: color 0.2s;
+}
+
+.star:hover,
+.star.active {
+    color: #ffc107;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.success-message {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo">Raphael Prints</div>
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+</header>
+
+<div class="container">
+    <h1 class="page-title">Customer Reviews</h1>
+    <p class="page-subtitle">See what our clients are saying about our 3D printing services</p>
+    
+    <!-- Rating Summary -->
+    <div class="rating-summary">
+        <div class="overall-rating" id="overallRating">5.0</div>
+        <div class="stars" id="overallStars">★★★★★</div>
+        <div class="review-count" id="reviewCount">0 reviews</div>
+    </div>
+    
+    <!-- Existing Reviews -->
+    <div class="reviews-section">
+        <h2 class="section-header">Recent Reviews</h2>
+        <div id="reviewsList">
+            <div class="no-reviews">
+                No reviews yet. Be the first to leave a review!
+            </div>
+        </div>
+    </div>
+    
+    <!-- Leave a Review Form -->
+    <div class="review-form-section">
+        <h2 class="section-header">Leave a Review</h2>
+        
+        <div id="successMessage" class="success-message">
+            ✓ Thank you! Your review has been submitted successfully.
+        </div>
+        
+        <form id="reviewForm">
+            <div class="form-group">
+                <label>Your Name *</label>
+                <input type="text" id="reviewerName" required placeholder="John Smith">
+            </div>
+            
+            <div class="form-group">
+                <label>Email (optional - won't be displayed)</label>
+                <input type="email" id="reviewerEmail" placeholder="john@example.com">
+            </div>
+            
+            <div class="form-group">
+                <label>Rating *</label>
+                <div class="star-rating" id="starRating">
+                    <span class="star" data-rating="1">★</span>
+                    <span class="star" data-rating="2">★</span>
+                    <span class="star" data-rating="3">★</span>
+                    <span class="star" data-rating="4">★</span>
+                    <span class="star" data-rating="5">★</span>
+                </div>
+                <input type="hidden" id="ratingValue" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Your Review *</label>
+                <textarea id="reviewText" required placeholder="Tell us about your experience with Raphael Prints..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Review</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// Star rating interaction
+let selectedRating = 0;
+const stars = document.querySelectorAll('.star');
+const ratingValue = document.getElementById('ratingValue');
+
+stars.forEach(star => {
+    star.addEventListener('click', function() {
+        selectedRating = parseInt(this.dataset.rating);
+        ratingValue.value = selectedRating;
+        updateStars();
+    });
+    
+    star.addEventListener('mouseenter', function() {
+        const hoverRating = parseInt(this.dataset.rating);
+        highlightStars(hoverRating);
+    });
+});
+
+document.getElementById('starRating').addEventListener('mouseleave', function() {
+    updateStars();
+});
+
+function highlightStars(rating) {
+    stars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.add('active');
+        } else {
+            star.classList.remove('active');
+        }
+    });
+}
+
+function updateStars() {
+    highlightStars(selectedRating);
+}
+
+// Load reviews from storage
+async function loadReviews() {
+    try {
+        const result = await window.storage.list('review:', true);
+        
+        if (result && result.keys && result.keys.length > 0) {
+            const reviews = [];
+            
+            for (const key of result.keys) {
+                const reviewData = await window.storage.get(key, true);
+                if (reviewData) {
+                    reviews.push(JSON.parse(reviewData.value));
+                }
+            }
+            
+            displayReviews(reviews);
+        }
+    } catch (error) {
+        console.log('No reviews yet or storage not available');
+    }
+}
+
+function displayReviews(reviews) {
+    const reviewsList = document.getElementById('reviewsList');
+    
+    if (reviews.length === 0) {
+        reviewsList.innerHTML = '<div class="no-reviews">No reviews yet. Be the first to leave a review!</div>';
+        return;
+    }
+    
+    // Sort by date (newest first)
+    reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    // Calculate average rating
+    const avgRating = (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1);
+    document.getElementById('overallRating').textContent = avgRating;
+    document.getElementById('overallStars').textContent = '★'.repeat(Math.round(avgRating)) + '☆'.repeat(5 - Math.round(avgRating));
+    document.getElementById('reviewCount').textContent = `${reviews.length} review${reviews.length !== 1 ? 's' : ''}`;
+    
+    // Display reviews
+    reviewsList.innerHTML = reviews.map(review => `
+        <div class="review-card">
+            <div class="review-header">
+                <div class="reviewer-name">${escapeHtml(review.name)}</div>
+                <div class="review-date">${formatDate(review.date)}</div>
+            </div>
+            <div class="review-stars">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</div>
+            <div class="review-text">${escapeHtml(review.text)}</div>
+        </div>
+    `).join('');
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+}
+
+// Handle form submission
+document.getElementById('reviewForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('reviewerName').value;
+    const email = document.getElementById('reviewerEmail').value;
+    const rating = parseInt(ratingValue.value);
+    const text = document.getElementById('reviewText').value;
+    
+    if (!rating) {
+        alert('Please select a star rating');
+        return;
+    }
+    
+    const review = {
+        name: name,
+        email: email,
+        rating: rating,
+        text: text,
+        date: new Date().toISOString()
+    };
+    
+    try {
+        // Save to storage with unique key
+        const reviewKey = 'review:' + Date.now();
+        await window.storage.set(reviewKey, JSON.stringify(review), true);
+        
+        // Show success message
+        document.getElementById('successMessage').style.display = 'block';
+        
+        // Reset form
+        this.reset();
+        selectedRating = 0;
+        updateStars();
+        
+        // Reload reviews
+        await loadReviews();
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+            document.getElementById('successMessage').style.display = 'none';
+        }, 5000);
+        
+        // Scroll to top to see the new review
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+    } catch (error) {
+        alert('Thank you for your review! Note: Reviews will be visible once the page is refreshed.');
+        console.error('Storage error:', error);
+    }
+});
+
+// Load reviews on page load
+loadReviews();
+</script>
+
+</body>
+</html>

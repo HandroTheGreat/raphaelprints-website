@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raphael Prints | 3D Printing Services</title>
+<style>
+/* Reset default margins */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+nav a:hover {
+    opacity: 0.8;
+}
+
+/* Banner/Hero section */
+.banner {
+    background: linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/><path fill="%23764ba2" opacity="0.3" d="M0 300L50 280C100 260 200 220 300 200C400 180 500 180 600 200C700 220 800 260 900 260C1000 260 1100 220 1150 200L1200 180V600H0Z"/></svg>');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.banner h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.banner p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background: white;
+    color: #667eea;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Content section */
+.content {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.content h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+.content ul {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.content li {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.content p {
+    margin-bottom: 15px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .banner h1 {
+        font-size: 32px;
+    }
+    
+    .banner p {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Header with navigation -->
+<header>
+    <div class="header-content">
+        <div class="logo">Raphael Prints</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Banner/Hero section -->
+<section id="home" class="banner">
+    <h1>Professional 3D Printing Services</h1>
+    <p>Bringing your ideas to life with precision and quality. Competitive pricing and exceptional results.</p>
+    <p style="font-size: 16px; margin-top: 15px; opacity: 0.95;"> Proudly serving the Greater Toronto Area from Hamilton</p>
+    <a href="get-started.html" target="_blank" class="cta-button">Upload Your STL for a Free Quote</a>
+</section>
+
+<!-- Feature Boxes -->
+<section class="content" style="padding: 60px 20px; background: #f9f9f9;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="text-align: center; margin-bottom: 40px; color: #667eea;">Who We Serve</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            
+            <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 15px;">🎲</div>
+                <h3 style="color: #667eea; margin-bottom: 15px;">Gamers</h3>
+                <p style="color: #666; line-height: 1.6;">Custom miniatures, tabletop game pieces, cosplay props, and collectibles. Bring your favorite characters to life.</p>
+            </div>
+            
+            <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 15px;">🏠</div>
+                <h3 style="color: #667eea; margin-bottom: 15px;">Homeowners</h3>
+                <p style="color: #666; line-height: 1.6;">Replacement parts for appliances, custom knobs, brackets, custom fixtures, and hard-to-find components.</p>
+            </div>
+            
+            <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center;">
+                <div style="font-size: 48px; margin-bottom: 15px;">🔧</div>
+                <h3 style="color: #667eea; margin-bottom: 15px;">Hobbyists</h3>
+                <p style="color: #666; line-height: 1.6;">Custom jigs and fixtures, small batch production, vintage car parts, and functional parts for your enjoyment.</p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="content">
+    <h2>Our Services</h2>
+    <p>We offer a wide range of 3D printing services tailored to your needs:</p>
+    <ul>
+        <li><strong>Prototyping:</strong> Bring your concepts to life</li>
+        <li><strong>Custom Parts:</strong> Precision manufacturing for unique requirements</li>
+        <li><strong>Small Batch Production:</strong> Cost-effective runs for limited quantities</li>
+        <li><strong>Design Consultation:</strong> Expert advice to optimize your models for printing</li>
+    </ul>
+</section>
+
+<!-- Portfolio/Gallery Section -->
+<section id="gallery" class="content" style="background: #f9f9f9; padding: 60px 20px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <h2 style="text-align: center; margin-bottom: 20px; color: #667eea;">Our Work</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 40px;">See what we've created for our clients</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            
+            <!-- Placeholder 1: Miniature -->
+            <div style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <div style="height: 250px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 60px;">
+                    🎲
+                </div>
+                <div style="padding: 20px;">
+                    <h3 style="color: #333; margin-bottom: 10px;">Tabletop Activties</h3>
+                    <p style="color: #666; font-size: 14px;">Custom figurines, game pieces and dice all printed with maximum precision and high detail.</p>
+                </div>
+            </div>
+            
+            <!-- Placeholder 2: Car Part -->
+            <div style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <div style="height: 250px; background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 60px;">
+                    🚗
+                </div>
+                <div style="padding: 20px;">
+                    <h3 style="color: #333; margin-bottom: 10px;">Vintage Car Parts</h3>
+                    <p style="color: #666; font-size: 14px;">Replacement parts for classic vehicles, perfectly reproduced.</p>
+                </div>
+            </div>
+            
+            <!-- Placeholder 3: Prototype -->
+            <div style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <div style="height: 250px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 60px;">
+                    ⚙️
+                </div>
+                <div style="padding: 20px;">
+                    <h3 style="color: #333; margin-bottom: 10px;">Functional Prototypes</h3>
+                    <p style="color: #666; font-size: 14px;">Professional-grade prototypes for product development and testing.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+
+        </p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="content">
+    <h2>About Raphael Prints</h2>
+    <p>We are a small, locally-owned business based in Hamilton, proudly serving the Greater Toronto Area. We specialize in high-quality 3D printing services for businesses, hobbyists, and creators. Whether you need prototypes, custom parts, or unique designs, we've got you covered.</p>
+    <p>As a local business, we understand the importance of quality, reliability, and personalized service. With years of experience and state-of-the-art equipment, we deliver exceptional results with competitive pricing.</p>
+    <p><strong>What we can print:</strong> From tabletop game pieces and miniatures to vintage plastic car parts and custom replacements, Raphael Prints brings your projects to life. Whether you're a hobbyist, collector, or need hard-to-find replacement parts, we've got the expertise to help.</p>
+    <p><strong>Why choose a local Hamilton business?</strong> Supporting local means personalized service, attention to your projects, and contributing to our community's growth.</p>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="content">
+    <h2>Contact Us</h2>
+    <p>Ready to start your project? Get in touch with your local Hamilton 3D printing experts!</p>
+    <p><strong> Location:</strong> Hamilton, Ontario - Serving the Greater Toronto Area</p>
+    <p><strong> Email:</strong> alexcheng@bell.net</p>
+    <p><strong> Phone:</strong> (905) 745-0022</p>
+    <p><strong> Hours:</strong> Monday - Friday, 9AM - 6PM</p>
+    <p style="margin-top: 20px; color: #000000; font-weight: 500;"> Delivery available throughout the GTA</p>            
+    </div>
+</section>
+
+</body>
+</html>
